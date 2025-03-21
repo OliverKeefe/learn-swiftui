@@ -2,6 +2,7 @@ import SwiftUI
 
 struct MonzoCardView: View {
     private var balance: Double = 25.40
+    @State private var showPopup = false
     
     var body: some View {
         ZStack {
@@ -47,14 +48,37 @@ struct MonzoCardView: View {
                     }) {
                         HStack {
                             Image(systemName: "plus.circle.fill")
+                                .foregroundColor(Color.white)
                             Text("Add Money")
+                                .foregroundColor(Color.white)
                         }
-                        .padding(.horizontal, 15)
+                        .padding(.horizontal, 10)
                         .padding(.vertical, 8)
                         .background(Color.white.opacity(0.2))
                         .clipShape(Capsule())
+                        .padding(.bottom, 30)
                     }
                     
+                    Button(action: {
+                        print("Card Tapped")
+                        showPopup = true
+                            }) {
+                                HStack {
+                                    Image(systemName: "creditcard.fill")
+                                        .foregroundColor(Color.white)
+                                    Text("Card")
+                                        .foregroundColor(Color.white)
+                                }
+                                .padding(.horizontal, 15)
+                                .padding(.vertical, 8)
+                                .background(Color.white.opacity(0.2))
+                                .clipShape(Capsule())
+                                .padding(.bottom, 30)
+                            }
+                            .sheet(isPresented: $showPopup) {
+                                PopupView()
+                            }
+                            
                     Spacer()
                     
                     Button(action: {
@@ -64,8 +88,11 @@ struct MonzoCardView: View {
                             .padding(10)
                             .background(Color.white.opacity(0.2))
                             .clipShape(Circle())
+                            .padding(.bottom, 30)
                     }
+                    Spacer()
                 }
+
             }
             .padding(20)
         }
