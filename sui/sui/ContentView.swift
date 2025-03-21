@@ -9,9 +9,15 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Green Things")
-            .padding()
-            .background(Color(hex: 0xFF0000, alpha: 0.2))
+        NavigationStack {
+            VStack {
+                MonzoCardView()
+
+            }
+            .background(Color.black.ignoresSafeArea())
+            
+        }
+        
     }
 }
 
