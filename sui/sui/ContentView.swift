@@ -14,7 +14,7 @@ struct ContentView: View {
                 MonzoCardView()
 
             }
-            .background(Color.black.ignoresSafeArea())
+            .background(Color.white.ignoresSafeArea())
             
         }
         

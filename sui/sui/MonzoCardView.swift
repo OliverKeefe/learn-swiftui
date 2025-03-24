@@ -86,6 +86,7 @@ struct MonzoCardView: View {
                     }) {
                         Image(systemName: "ellipsis")
                             .padding(10)
+                            .foregroundColor(Color.white)
                             .background(Color.white.opacity(0.2))
                             .clipShape(Circle())
                             .padding(.bottom, 30)
