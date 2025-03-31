@@ -7,15 +7,28 @@
 
 import SwiftUI
 
-struct ContentView: View {
-    var body: some View {
-        NavigationStack {
-            VStack {
-                MonzoCardView()
+enum Destination: Hashable {
+    case otherView
+}
 
+struct ContentView: View {
+    @State private var path: [Destination] = []
+    
+    var body: some View {
+        NavigationStack(path: $path) {
+            VStack {
+                MonzoCardView(path: $path)
             }
-            .background(Color.white.ignoresSafeArea())
-            
+            .frame(maxHeight: .infinity, alignment: .top)
+            .background(Color.white)
+            .padding(.top)
+            .navigationDestination(for: Destination.self) { destination in
+                            switch destination {
+                            case .otherView:
+                                OtherView()
+                            }
+                        }
+                        
         }
         
     }
