@@ -1,8 +1,11 @@
 import SwiftUI
 
 struct MonzoCardView: View {
-    private var balance: Double = 25.40
+    var balance: Double = 25.40
+    @Binding var path: [Destination]
     @State private var showPopup = false
+    @State private var navigateToOtherView = false
+
     
     var body: some View {
         ZStack {
@@ -45,6 +48,8 @@ struct MonzoCardView: View {
                 HStack {
                     Button(action: {
                         print("Add Money Tapped")
+                        path.append(.otherView)
+                        
                     }) {
                         HStack {
                             Image(systemName: "plus.circle.fill")
@@ -103,5 +108,5 @@ struct MonzoCardView: View {
 }
 
 #Preview {
-    MonzoCardView()
+    MonzoCardView(path: .constant([]))
 }
